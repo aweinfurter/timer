@@ -35,3 +35,84 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+:root {
+  --ion-color-primary: #3880ff;
+  --ion-color-success: #2dd36f;
+  --ion-color-danger: #eb445a;
+}
+
+:root[color-theme="dark"] {
+  --ion-background-color: #1e1e1e;
+  --ion-background-color-rgb: 30,30,30;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+  --ion-border-color: #383838;
+  
+  --ion-color-step-50: #232323;
+  --ion-color-step-100: #2e2e2e;
+  --ion-color-step-150: #3a3a3a;
+  --ion-color-step-200: #454545;
+  --ion-color-step-250: #515151;
+  --ion-color-step-300: #5d5d5d;
+  --ion-color-step-350: #696969;
+  --ion-color-step-400: #757575;
+  --ion-color-step-450: #818181;
+  --ion-color-step-500: #8d8d8d;
+  --ion-color-step-550: #999999;
+  --ion-color-step-600: #a5a5a5;
+  --ion-color-step-650: #b1b1b1;
+  --ion-color-step-700: #bdbdbd;
+  --ion-color-step-750: #c9c9c9;
+  --ion-color-step-800: #d5d5d5;
+  --ion-color-step-850: #e1e1e1;
+  --ion-color-step-900: #ededed;
+  --ion-color-step-950: #f9f9f9;
+}
+
+// Estilos do Time Picker Modal
+.time-picker-modal {
+  --height: 100%;
+  --width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --backdrop-opacity: 0.5;
+
+  &::part(content) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    inset: auto;
+    transform: none;
+  }
+
+  .modal-wrapper {
+    position: relative;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ion-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    contain: content;
+    border-radius: 16px;
+    width: auto;
+    height: auto;
+    background: var(--ion-background-color);
+    color: var(--ion-text-color);
+  }
+}

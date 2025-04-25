@@ -1,0 +1,53 @@
+<p>
+  timer works!
+</p>
+
+<ion-content class="ion-padding">
+  <div class="timer-container">
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+      <ion-button fill="clear" (click)="toggleTheme()">
+        <ion-icon [name]="(themeService.isDark$ | async) ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Visualização da Imagem -->
+    <div class="image-container">
+      <div class="image-wrapper">
+        <img [src]="currentImage" alt="Timer Image" *ngIf="currentImage" class="base-image">
+        <div class="progress-mask" [style.background]="'conic-gradient(from 0deg, transparent ' + (timerState?.progress || 0) + '%, ' + ((themeService.isDark$ | async) ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)') + ' ' + (timerState?.progress || 0) + '% 100%)'"></div>
+      </div>
+    </div>
+
+    <!-- Timer Display -->
+    <div class="timer-display" (click)="openTimePicker()">
+      <h1>{{ formatTime(timerState?.currentTime || 0) }}</h1>
+    </div>
+
+    <!-- Controles do Timer -->
+    <div class="timer-controls">
+      <ion-button class="timer-button start" (click)="startTimer()" [disabled]="timerState?.isRunning" fill="solid" color="success">
+        <ion-icon name="play-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="timer-button pause" (click)="pauseTimer()" [disabled]="!timerState?.isRunning" fill="solid" color="danger">
+        <ion-icon name="pause-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="timer-button reset" (click)="resetTimer()" fill="solid" color="warning">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Controles de Imagem -->
+    <div class="image-controls">
+      <ion-button class="image-button camera" (click)="takePicture()" fill="clear">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="image-button gallery" (click)="selectFromGallery()" fill="clear">
+        <ion-icon name="images-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="image-button new" (click)="clearImage()" fill="clear">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

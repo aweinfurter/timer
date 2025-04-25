@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { TimerComponent } from './components/timer/timer.component';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,11 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'timer',
     pathMatch: 'full',
   },
+  {
+    path: 'timer',
+    component: TimerComponent,
+  }
 ];

@@ -1,0 +1,221 @@
+:host {
+  --primary-color: #FF4B4B;
+  --success-color: #4CAF50;
+  --warning-color: #FFD93D;
+  --background-color: var(--ion-background-color, #F7F9FC);
+  --button-size: 60px;
+  --image-size: 300px;
+  --text-color: var(--ion-text-color, #2C3E50);
+  --mask-color: var(--ion-color-step-200, rgba(255, 255, 255, 0.9));
+  --button-bg: var(--ion-color-step-100, #f4f5f8);
+  --button-color: var(--ion-color-step-750, #2C3E50);
+
+  // Cores personalizadas do Ionic
+  --ion-color-success: var(--success-color);
+  --ion-color-danger: var(--primary-color);
+  --ion-color-warning: var(--warning-color);
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+
+  ion-button {
+    --color: var(--text-color);
+    --padding-start: 8px;
+    --padding-end: 8px;
+    
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+}
+
+// Imagem principal
+.image-container {
+  width: var(--image-size);
+  height: var(--image-size);
+  margin: 0 auto;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--background-color);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border: 8px solid white;
+}
+
+.base-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background 0.3s linear;
+  pointer-events: none;
+}
+
+[color-theme="dark"] .progress-mask {
+  background: conic-gradient(from 0deg, transparent var(--progress, 0%), rgba(0, 0, 0, 0.7) var(--progress, 0%) 100%) !important;
+}
+
+// Seção de controles
+.controls-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+// Botões do timer
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+ion-button.timer-button {
+  --border-radius: 50%;
+  width: var(--button-size);
+  height: var(--button-size);
+  --padding-start: 0;
+  --padding-end: 0;
+  
+  &::part(native) {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:not(:disabled) {
+    animation: bounce 2s infinite;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  ion-icon {
+    font-size: 32px;
+  }
+}
+
+// Display do timer
+.timer-display {
+  text-align: center;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 15px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--ion-text-color-rgb), 0.05);
+  }
+
+  &:active {
+    background-color: rgba(var(--ion-text-color-rgb), 0.1);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--text-color);
+  }
+}
+
+// Configuração do tempo
+.time-setup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.time-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+ion-input.minutes-input {
+  width: 60px;
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #2C3E50;
+  font-weight: bold;
+  --background: transparent;
+}
+
+.time-label {
+  color: #2C3E50;
+  font-weight: 500;
+}
+
+// Botões de imagem
+.image-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+ion-button.image-button {
+  --border-radius: 50%;
+  width: calc(var(--button-size) * 0.8);
+  height: calc(var(--button-size) * 0.8);
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: var(--button-bg);
+
+  &::part(native) {
+    width: 100%;
+    height: 100%;
+  }
+
+  ion-icon {
+    font-size: 24px;
+    color: var(--button-color);
+  }
+}
+
+// Animações
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
